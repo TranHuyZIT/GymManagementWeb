@@ -80,6 +80,12 @@ class HoaDonController {
 					{ $set: { "dkypt.$.isChecked": true } }
 				).session(session);
 			}
+			await HoaDonModel.updateOne(
+				{
+					_id: hoadon._id,
+				},
+				{ isChecked: true }
+			);
 			hoadon = await HoaDonModel.findById(
 				mahoadon
 			).session(session);
@@ -179,6 +185,7 @@ class HoaDonController {
 					dkypt: dkyPTRecords,
 					tongtien,
 					ngaylap: info.ngaylap,
+					isChecked: false,
 				},
 				{
 					session,
@@ -285,6 +292,7 @@ class HoaDonController {
 					dkypt: dkyPTRecords,
 					tongtien,
 					ngaylap: info.ngaylap,
+					isChecked: true,
 				},
 				{
 					session,

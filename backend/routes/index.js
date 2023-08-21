@@ -3,7 +3,6 @@ const router = express.Router();
 
 const {
 	userAuth,
-	adminAuth,
 } = require("~/middlewares/authentication");
 
 router.get("", (req, res) => {
@@ -15,13 +14,11 @@ router.use("/pt", userAuth, require("~/routes/pt.route"));
 router.use(
 	"/goitap",
 	userAuth,
-	adminAuth,
 	require("~/routes/goitap.route")
 );
 router.use(
 	"/goipt",
 	userAuth,
-	adminAuth,
 	require("~/routes/goipt.route")
 );
 router.use(

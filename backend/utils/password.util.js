@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const PasswordUtil = {
 	hash(data) {
 		const saltRounds = 10;

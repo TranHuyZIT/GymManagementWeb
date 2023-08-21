@@ -65,11 +65,9 @@ class KhachController {
 	async laymot(req, res) {
 		try {
 			const id = req.params.id;
-			const khach = await KhachModel.findById(id);
-			if (!khach)
-				throw new Error(
-					"Không tìm thấy khách có mã này"
-				);
+			const khach = await KhachModel.findById(
+				id
+			).sort([]);
 			const dkytap = khach.dkytap.sort((a, b) => {
 				return (
 					new Date(b.ngayhethan) -
@@ -86,18 +84,31 @@ class KhachController {
 				...khach.toJSON(),
 				dkypt,
 				dkytap,
+				ngayHetHanTap: "",
+				ngayHetHanPT: "",
 			};
 			if (dkytap.length > 0) {
-				result["ngayHetHanTap"] =
-					dkytap[0]?.ngayhethan || "";
+				for (const dky of dkytap) {
+					if (dky.isChecked) {
+						result["ngayHetHanTap"] =
+							dky.ngayhethan;
+						break;
+					}
+				}
 			}
 			if (dkypt.length > 0) {
-				result["ngayHetHanPT"] =
-					dkytap[0]?.ngayhethan || "";
+				for (const dky of dkypt) {
+					if (dky.isChecked) {
+						result["ngayHetHanPT"] =
+							dky.ngayhethan;
+						break;
+					}
+				}
 			}
+			console.log(result);
 			return res.status(200).json(result);
 		} catch (error) {
-			return res.status(500).send({
+			res.send({
 				msg: error.message,
 			});
 		}

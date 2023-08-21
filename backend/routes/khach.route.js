@@ -12,7 +12,10 @@ const {
 
 const router = require("express").Router();
 
-router.route("/").get(userAuth, laytatca).post(dkykhach);
+router
+	.route("/")
+	.get(userAuth, adminAuth, laytatca)
+	.post(dkykhach);
 router
 	.route("/:id")
 	.get(userAuth, laymot)

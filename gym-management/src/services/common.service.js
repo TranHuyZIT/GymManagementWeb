@@ -1,7 +1,7 @@
 class CommonService {
-  convertProxyObjectToPojo(proxyObj) {
-    return JSON.parse(JSON.stringify(proxyObj))
-  }
+	convertProxyObjectToPojo(proxyObj) {
+		return JSON.parse(JSON.stringify(proxyObj));
+	}
 }
 
-export default new CommonService()
+export default new CommonService();

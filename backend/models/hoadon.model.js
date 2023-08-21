@@ -26,6 +26,11 @@ const HoaDon = new mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
+		isChecked: {
+			type: Boolean,
+			default: false,
+			require: true,
+		},
 	},
 	{ timestamps: true }
 );

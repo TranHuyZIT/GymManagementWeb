@@ -1,10 +1,8 @@
-import Request from './api.service'
-class GoiTapService {
-  constructor(baseUrl = 'goitap') {
-    this.api = Request(baseUrl)
-  }
-  async getAll() {
-    return await this.api.get('/')
-  }
+import Request, { ApiService } from "./api.service";
+class GoiTapService extends ApiService {
+	constructor() {
+		super();
+		this.api = Request("goitap/");
+	}
 }
-export default GoiTapService
+export default new GoiTapService();

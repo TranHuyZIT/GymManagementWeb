@@ -63,8 +63,9 @@ class AuthController {
 			);
 			return res.status(200).json(accessToken);
 		} catch (error) {
-			res.status(500).send({
-				msg: error.message,
+			console.log(error);
+			return res.status(500).send({
+				message: error.message,
 			});
 		}
 	}
@@ -110,7 +111,7 @@ class AuthController {
 				info: pt,
 			});
 		} catch (error) {
-			res.send({
+			res.status(401).send({
 				msg: error.message,
 			});
 		}
